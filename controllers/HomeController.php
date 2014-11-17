@@ -14,7 +14,7 @@ class HomeController
         //Recupère tous les articles
         $all = $article->getAll();
 
-        //Construction de l'html
+        /*//Construction de l'html
         $html = '<html><body>';
 
         //Boucle sur tous les articles
@@ -27,8 +27,10 @@ class HomeController
         } 
         
         //fin de l'html
-        $html .= '</body></html>';
+        $html .= '</body></html>';*/
 
-        return $html;
+        return $app['twig']->render('home/index.twig', array(
+            'articles' => $all,
+        ));
     }
 }
