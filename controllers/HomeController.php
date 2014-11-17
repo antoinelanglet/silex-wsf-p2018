@@ -6,8 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class HomeController
 {
-    public function index(Request $request, Application $app)
+    public function index(Request $request, Application $app, $name)
     {
-        return 'Hello Home';
+        return 'Hello '.$name;
     }
 }

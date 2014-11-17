@@ -6,10 +6,6 @@ $app = new Silex\Application();
 $app['debug'] = true;
 
 //Routes
-$app->get('/', 'MVC\\HomeController::index');
-
-$app->get('/hello/{name}', function ($name) use ($app) {
-    return 'Hello '.$app->escape($name);
-});
+$app->get('/{name}', 'MVC\\HomeController::index');
 
 $app->run();
