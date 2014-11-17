@@ -6,6 +6,6 @@ $app = new Silex\Application();
 $app['debug'] = true;
 
 //Routes
-$app->get('/{name}', 'MVC\\HomeController::index');
+$app->get('/', 'MVC\\HomeController::index');
 
 $app->run();
