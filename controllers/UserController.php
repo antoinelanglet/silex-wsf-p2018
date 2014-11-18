@@ -39,6 +39,8 @@ class UserController
             }
         }
 
+        //$app['session']->getFlashBag();
+
         //On redirige vers la home sans modifier la session
         return $app->redirect(
             $app['url_generator']->generate('home')

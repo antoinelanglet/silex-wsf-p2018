@@ -6,15 +6,19 @@
 <body>
     <div class="main">{% block content %}{% endblock %}</div>
     <aside>
-        <form action="{{ app.url_generator.generate('postLogin') }}" method="post">
-            <label for="login">Login :</label>
-            <input type="text" name="login" id="login"/>
+        {% if app.session.get('user') %}
+            <p>Welcome {{ app.session.get('user').username }}</p>
+        {% else %}
+            <form action="{{ app.url_generator.generate('postLogin') }}" method="post">
+                <label for="login">Login :</label>
+                <input type="text" name="login" id="login"/>
 
-            <label for="password">Password :</label>
-            <input type="text" name="password" id="password"/>
+                <label for="password">Password :</label>
+                <input type="text" name="password" id="password"/>
 
-            <input type="submit" value="Login" />
-        </form>
+                <input type="submit" value="Login" />
+            </form>
+        {% endif %}
     </aside>
     <footer>{% block footer %}{% endblock %}</footer>
 
