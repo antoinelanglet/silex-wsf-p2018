@@ -39,7 +39,8 @@ class UserController
             }
         }
 
-        //$app['session']->getFlashBag();
+        //Ajoute un message temporaire (flash) dans la session
+        $app['session']->getFlashBag()->add('loginError', 'Votre identifiant ou votre mot de passe est incorrect');
 
         //On redirige vers la home sans modifier la session
         return $app->redirect(
