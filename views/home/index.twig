@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ma page article</title>
-</head>
-<body>  
+{% extends "layout/default.twig" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
     {% for id, article in articles %}
     <article>
         <h2>
-            <a href="article/{{id}}" >{{article.title|e}}</a>
+            <a href="{{ path('getArticle', {id: id}) }}" >{{article.title|e}}</a>
         </h2>
         <p>{{article.body|e}}</p>
     </article>  
     {% endfor %}
-</body>
-</html>
+{% endblock %}
+
+{% block javascript %}
+    {{parent()}}
+    <script type="text/javascript">
+    var monjs;
+    </script>
+{% endblock %}
+ 

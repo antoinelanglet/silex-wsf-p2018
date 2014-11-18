@@ -15,8 +15,14 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
 
+//Configuration du service URL Generator
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+
 //Routes
-$app->get('/', 'MVC\\HomeController::index');
-$app->get('/article/{id}', 'MVC\\HomeController::getArticle');
+$app->get('/', 'MVC\\HomeController::index')
+    ->bind('home');
+
+$app->get('/article/{id}', 'MVC\\HomeController::getArticle')
+    ->bind('getArticle');
 
 $app->run();

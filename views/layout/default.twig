@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog - {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="main">{% block content %}{% endblock %}</div>
+    <footer>{% block footer %}{% endblock %}</footer>
+
+    {% block javascript %}
+        <script type="text/javascript">
+        var monjsdebase;
+        </script>
+    {% endblock %}
+</body>
+</html>

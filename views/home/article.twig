@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ma page article</title>
-</head>
-<body>  
+{% extends "layout/default.twig" %}
+
+{% block title %}Article{% endblock %}
+
+{% block content %}
     <article>
         <h2>{{article.title|e}}</h2>
         <p>{{article.body|e}}</p>
     </article>  
-</body>
-</html>
+{% endblock %}
