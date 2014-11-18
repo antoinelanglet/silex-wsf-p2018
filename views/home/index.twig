@@ -6,8 +6,8 @@
 <body>  
     {% for article in articles %}
     <article>
-        <h2>{{article.title}}</h2>
-        <p>{{article.body}}</p>
+        <h2>{{article.title|e}}</h2>
+        <p>{{article.body|e}}</p>
     </article>  
     {% endfor %}
 </body>

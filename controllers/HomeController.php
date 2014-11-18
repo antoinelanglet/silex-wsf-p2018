@@ -29,8 +29,24 @@ class HomeController
         //fin de l'html
         $html .= '</body></html>';*/
 
+        //Appel de twig, pour générer le rendu html
         return $app['twig']->render('home/index.twig', array(
             'articles' => $all,
         ));
+    }
+
+    public function getArticle(Request $request, Application $app, $id)
+    {
+        //initialise le model Article
+        $article = new Article();
+
+        //Recupère un article
+        $myArticle = $article->get($id);
+
+        //Appel de twig, pour générer le rendu html
+        return $app['twig']->render('home/article.twig', array(
+            'article' => $myArticle,
+        ));
+
     }
 }

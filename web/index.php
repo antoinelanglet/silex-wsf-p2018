@@ -17,5 +17,6 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 //Routes
 $app->get('/', 'MVC\\HomeController::index');
+$app->get('/article/{id}', 'MVC\\HomeController::getArticle');
 
 $app->run();
