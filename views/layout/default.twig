@@ -5,6 +5,15 @@
 </head>
 <body>
     <div class="main">{% block content %}{% endblock %}</div>
+    <aside>
+        <form action="" method="post">
+            <label for="login">Login :</label>
+            <input type="text" name="login" id="login"/>
+
+            <label for="password">Password :</label>
+            <input type="text" name="password" id="password"/>
+        </form>
+    </aside>
     <footer>{% block footer %}{% endblock %}</footer>
 
     {% block javascript %}

@@ -18,6 +18,10 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 //Configuration du service URL Generator
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 
+//Configuration du service session
+$app->register(new Silex\Provider\SessionServiceProvider());
+
+
 //Routes
 $app->get('/', 'MVC\\HomeController::index')
     ->bind('home');
