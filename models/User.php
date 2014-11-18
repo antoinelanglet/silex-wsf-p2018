@@ -28,6 +28,11 @@ class User
 
     public function getByLogin($login)
     {
-        # code...
+        foreach ($this->datas as $user) {
+            if ($user['login'] === $login) {
+                return $user;
+            }
+        }
+        return null;
     }
 }

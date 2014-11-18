@@ -29,4 +29,7 @@ $app->get('/', 'MVC\\HomeController::index')
 $app->get('/article/{id}', 'MVC\\HomeController::getArticle')
     ->bind('getArticle');
 
+$app->post('/login', 'MVC\\UserController::postLogin')
+    ->bind('postLogin');
+
 $app->run();
