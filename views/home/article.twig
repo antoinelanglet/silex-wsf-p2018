@@ -4,13 +4,9 @@
     <title>Ma page article</title>
 </head>
 <body>  
-    {% for id, article in articles %}
     <article>
-        <h2>
-            <a href="article/{{id}}" >{{article.title|e}}</a>
-        </h2>
+        <h2>{{article.title|e}}</h2>
         <p>{{article.body|e}}</p>
     </article>  
-    {% endfor %}
 </body>
 </html>
