@@ -4,7 +4,7 @@ namespace MVC;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
-class HomeController
+class HomeController extends Controller
 {
     public function index(Request $request, Application $app)
     {

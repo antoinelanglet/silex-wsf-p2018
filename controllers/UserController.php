@@ -4,7 +4,7 @@ namespace MVC;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
-class UserController
+class UserController extends Controller
 {
     public function postLogin(Request $request, Application $app)
     {
@@ -32,9 +32,7 @@ class UserController
                     ));
 
                     //on redirige vers la home
-                    return $app->redirect(
-                        $app['url_generator']->generate('home')
-                    );
+                    return $this->redirect($app, 'home');
                 }
             }
         }
@@ -43,9 +41,7 @@ class UserController
         $app['session']->getFlashBag()->add('loginError', 'Votre identifiant ou votre mot de passe est incorrect');
 
         //On redirige vers la home sans modifier la session
-        return $app->redirect(
-            $app['url_generator']->generate('home')
-        );
+        return $this->redirect($app, 'home');
     }
 
     public function getLogout(Request $request, Application $app)
@@ -54,9 +50,7 @@ class UserController
         $app['session']->set('user', null);
 
         //Redirection home
-        return $app->redirect(
-            $app['url_generator']->generate('home')
-        );
+        return $this->redirect($app, 'home');
     }
 
 }

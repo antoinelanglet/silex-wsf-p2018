@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Blog - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}/styles/main.css" />
 </head>
 <body>
     <div class="main">{% block content %}{% endblock %}</div>
