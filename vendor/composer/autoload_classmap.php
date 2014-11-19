@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'MVC\\AdminController' => $baseDir . '/controllers/AdminController.php',
     'MVC\\Article' => $baseDir . '/models/Article.php',
     'MVC\\Controller' => $baseDir . '/controllers/Controller.php',
     'MVC\\HomeController' => $baseDir . '/controllers/HomeController.php',

@@ -35,4 +35,7 @@ $app->post('/login', 'MVC\\UserController::postLogin')
 $app->get('/logout', 'MVC\\UserController::getLogout')
     ->bind('getLogout');
 
+$app->get('/admin', 'MVC\\AdminController::getAdminDashboard')
+    ->bind('getAdmin');
+
 $app->run();
