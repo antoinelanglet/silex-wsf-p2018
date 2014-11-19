@@ -48,4 +48,15 @@ class UserController
         );
     }
 
+    public function getLogout(Request $request, Application $app)
+    {
+        //On efface l'user de la session
+        $app['session']->set('user', null);
+
+        //Redirection home
+        return $app->redirect(
+            $app['url_generator']->generate('home')
+        );
+    }
+
 }

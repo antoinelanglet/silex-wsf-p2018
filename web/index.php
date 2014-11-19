@@ -32,4 +32,7 @@ $app->get('/article/{id}', 'MVC\\HomeController::getArticle')
 $app->post('/login', 'MVC\\UserController::postLogin')
     ->bind('postLogin');
 
+$app->get('/logout', 'MVC\\UserController::getLogout')
+    ->bind('getLogout');
+
 $app->run();
