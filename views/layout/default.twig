@@ -7,8 +7,8 @@
 <body>
     <div class="main">{% block content %}{% endblock %}</div>
     <aside>
-        {% if app.session.get('user') %}
-            <p>Welcome {{ app.session.get('user').username }}</p>
+        {% if user is defined %}
+            <p>Welcome {{ user.username }}</p>
 
             <a href="{{ path('getLogout') }}">Logout<a/>
         {% else %}
