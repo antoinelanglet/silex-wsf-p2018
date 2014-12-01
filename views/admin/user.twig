@@ -5,6 +5,13 @@
 {% block content %}
     <h1>Admin - User</h1>
 
+    {% for message in app.session.flashbag.get('success') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    {% for error in app.session.flashbag.get('error') %}
+        <p>{{ error }}</p>
+    {% endfor %}
+
     <form action="{{ path('postAdminUser') }}" method="post">
         {% for error in app.session.flashbag.get('errorsEmail') %}
             <p>{{ error }}</p>

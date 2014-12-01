@@ -61,7 +61,7 @@ class AdminController extends Controller
             )
         );
 
-
+        //Si il y a des erreurs
         if (count($errorsEmail) > 0 || count($errorsPassword) > 0) {
             foreach ($errorsEmail as $error) {
                 $app['session']->getFlashBag()->add('errorsEmail', $error->getMessage());
@@ -73,6 +73,18 @@ class AdminController extends Controller
             return $this->redirect($app, 'getAdminUser');
         }
 
+        //Ajout d'un user dans la BDD
+        $user = new User();
+        $nb = $user->add($email , $password);
+
+        if ($nb) {
+            $app['session']->getFlashBag()->add('success', 'User added');
+        }
+        else {
+            $app['session']->getFlashBag()->add('error', 'User not added');
+        }
+
+        return $this->redirect($app, 'getAdminUser');
         //return $app['twig']->render('admin/user.twig', $this->datas);
     }
 
