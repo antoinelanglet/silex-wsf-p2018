@@ -13,4 +13,5 @@ return array(
     'MVC\\User' => $baseDir . '/models/User.php',
     'MVC\\UserController' => $baseDir . '/controllers/UserController.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
+    'Sql' => $baseDir . '/lib/Sql.php',
 );

@@ -8,6 +8,6 @@
     },
 
     "autoload": {
-        "classmap": ["controllers/", "models/"]
+        "classmap": ["controllers/", "models/", "lib/"]
     }
 }

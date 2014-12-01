@@ -3,24 +3,6 @@ namespace MVC;
 
 class Article 
 {
-    private $datas = array(
-        array(
-            'title' => 'Article 1',
-            'body'  => 'Mon article 1'
-        ),
-        array(
-            'title' => 'Article 2',
-            'body'  => 'Mon article 2'
-        ),
-        array(
-            'title' => 'Article 3',
-            'body'  => 'Mon article 3'
-        ),
-        array(
-            'title' => 'Article 4',
-            'body'  => 'Mon article 4'
-        )
-    );
 
     /**
      * Renvoi tous mes articles
@@ -28,6 +10,8 @@ class Article
      */
     public function getAll()
     {
+        $sql = Sql::getInstance();
+
         return $this->datas;
     }
 
