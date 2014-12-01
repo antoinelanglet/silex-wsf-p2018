@@ -73,15 +73,28 @@ class AdminController extends Controller
             return $this->redirect($app, 'getAdminUser');
         }
 
+        //hash le password
+        $password = password_hash($password, PASSWORD_BCRYPT);
+
+        $admin = $request->request->get('admin') ? true : false;
+
         //Ajout d'un user dans la BDD
         $user = new User();
-        $nb = $user->add($email , $password);
+        try {
+            $nb = $user->add($email , $password, $admin);
 
-        if ($nb) {
-            $app['session']->getFlashBag()->add('success', 'User added');
+            if ($nb) {
+                $app['session']->getFlashBag()->add('success', 'User added');
+            }
+            else {
+                $app['session']->getFlashBag()->add('error', 'User not added');
+            }    
         }
-        else {
-            $app['session']->getFlashBag()->add('error', 'User not added');
+        catch (\Exception $e) {
+            $app['session']->getFlashBag()->add(
+                'error', 
+                $e->getMessage()
+            );
         }
 
         return $this->redirect($app, 'getAdminUser');

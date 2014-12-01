@@ -3,29 +3,7 @@ namespace MVC;
 
 class User 
 {
-    private $datas = array(
-        array(
-            'login' => 'admin',
-            'password' => 'admin',
-            'admin' => true
-        ),
-        array(
-            'login' => 'user1',
-            'password' => 'user1',
-            'admin' => false
-        ),
-        array(
-            'login' => 'user2',
-            'password' => 'user2',
-            'admin' => false
-        ),
-        array(
-            'login' => 'user3',
-            'password' => 'user3',
-            'admin' => false
-        ),
-    );
-
+    
     public function getByLogin($login)
     {
         //Je recupère mon instance singleton de la class Sql
@@ -49,17 +27,21 @@ class User
         return $statement->fetch();
     }
 
-    public function add($email, $password)
+    public function add($email, $password, $admin)
     {
+
+        if ($this->getByLogin($email)) {
+            throw new \Exception('Email already exist.');
+        }
 
         //Je recupère mon instance singleton de la class Sql
         $sql = Sql::getInstance();
 
         //Creation de la requete
-        //Les parametre de la requetes sont sous la forme :variable
+        //Les parametre de la requete sont sous la forme :variable
         //et seront initialisé dans la methode execute
-        $sqlQuery = 'INSERT INTO user(login, password)
-                     VALUES(:login, :password)';        
+        $sqlQuery = 'INSERT INTO user(login, password, admin)
+                     VALUES(:login, :password, :admin)';        
 
         //Preparation de la requete, pdo renvoi un objet PDOStatement
         //qui executera la requete et contiendra les resultats
@@ -70,7 +52,8 @@ class User
         //la valeur de la clé :id correspond au :id dans la requete sql
         $statement->execute(array(
             ':login' => $email, 
-            ':password' => $password
+            ':password' => $password,
+            ':admin' => $admin,
         ));
 
         return $statement->rowCount();

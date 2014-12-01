@@ -23,7 +23,7 @@ class UserController extends Controller
             //Si $myUser n'est pas vide
             if (!empty($myUser)) {
                 //Si le password de l'user est égale au password du formulaire
-                if ($myUser['password'] === $password) {
+                if (password_verify($password, $myUser['password'])) {
 
                     //On enregistre l'user dans la session
                     $app['session']->set('user', array(
