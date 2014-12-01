@@ -10,9 +10,21 @@ class Article
      */
     public function getAll()
     {
+        //Je recupère mon instance singleton de la class Sql
         $sql = Sql::getInstance();
 
-        return $this->datas;
+        //Creation de la requete
+        $sqlQuery = 'SELECT * FROM article';
+
+        //Preparation de la requete, pdo renvoi un objet PDOStatement
+        //qui executera la requete et contiendra les resultats
+        $statement =  $sql->pdo->prepare($sqlQuery);
+
+        //Execution de la requete sur le server mysql
+        $statement->execute();
+
+        //Recuperation et renvoi des résultats
+        return $statement->fetchAll();
     }
 
     /**
@@ -22,12 +34,20 @@ class Article
      */
     public function get($id)
     {
-        //Renvoi l'article s'il est définit dans le tableau datas
-        if (isset($this->datas[$id])) {
-            return $this->datas[$id]; //Renvoi l'article, la function s'arrete ici.
-        }
+        //Je recupère mon instance singleton de la class Sql
+        $sql = Sql::getInstance();
 
-        //Sinon renvoi null
-        return null;
+        //Creation de la requete
+        $sqlQuery = 'SELECT * FROM article WHERE id =' . $id;
+
+        //Preparation de la requete, pdo renvoi un objet PDOStatement
+        //qui executera la requete et contiendra les resultats
+        $statement =  $sql->pdo->prepare($sqlQuery);
+
+        //Execution de la requete sur le server mysql
+        $statement->execute();
+
+        //Recuperation et renvoi des résultats
+        return $statement->fetch();
     }
 }

@@ -3,10 +3,10 @@
 {% block title %}Index{% endblock %}
 
 {% block content %}
-    {% for id, article in articles %}
+    {% for article in articles %}
     <article>
         <h2>
-            <a href="{{ app.url_generator.generate('getArticle', {id: id}) }}" >{{article.title|e}}</a>
+            <a href="{{ app.url_generator.generate('getArticle', {id: article.id}) }}" >{{article.title|e}}</a>
         </h2>
         <p>{{article.body|e}}</p>
     </article>  
